@@ -10,6 +10,7 @@ import com.motivationappkotlin.databinding.ActivityMainBinding
 import com.motivationappkotlin.infra.MotivationConstants
 import com.motivationappkotlin.infra.SecurityPreferences
 import com.motivationappkotlin.repository.Mock
+import java.util.Locale
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -95,7 +96,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
      * Atualiza frase de motivação
      * */
     private fun refreshPhrase() {
-        binding.textPhrase.text = mock.getPhrase(filter)
+        // binding.textPhrase.text = mock.getPhrase(filter)
+        // Obtém a língua do dispositivo
+        binding.textPhrase.text = mock.getPhrase(filter, Locale.getDefault().language)
     }
 
     /**
@@ -103,7 +106,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
      * */
     private fun showUserName() {
         val name = securityPreferences.getStoredString(MotivationConstants.KEY.PERSON_NAME)
-        binding.textUserName.text = "Olá, $name!"
+        val hello = getString(R.string.hello)
+        binding.textUserName.text = "$hello, $name!"
     }
 
     /**
