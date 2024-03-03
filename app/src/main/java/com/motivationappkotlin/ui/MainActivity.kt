@@ -1,5 +1,6 @@
 package com.motivationappkotlin.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -36,7 +37,27 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         // Inicializa
         handleFilter(R.id.image_all)
         refreshPhrase()
+    }
+
+    override fun onStart() {
+        super.onStart()
+    }
+
+    override fun onResume() {
+        super.onResume()
         showUserName()
+    }
+
+    override fun onPause() {
+        super.onPause()
+    }
+
+    override fun onStop() {
+        super.onStop()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 
     /**
@@ -54,6 +75,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             handleFilter(id)
         } else if (id == R.id.button_new_phrase) {
             refreshPhrase()
+        } else if (id == R.id.text_user_name) {
+            startActivity(Intent(this, UserActivity::class.java))
         }
     }
 
@@ -65,6 +88,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.imageHappy.setOnClickListener(this)
         binding.imageSunny.setOnClickListener(this)
         binding.buttonNewPhrase.setOnClickListener(this)
+        binding.textUserName.setOnClickListener(this)
     }
 
     /**

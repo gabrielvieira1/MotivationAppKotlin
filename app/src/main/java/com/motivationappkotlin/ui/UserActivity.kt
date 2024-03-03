@@ -28,7 +28,7 @@ class UserActivity : AppCompatActivity(), View.OnClickListener {
 
         // Acesso aos elementos de interface)
         binding.buttonSave.setOnClickListener(this)
-        verifyUserName()
+//        verifyUserName()
     }
 
     /**
@@ -41,16 +41,16 @@ class UserActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    /**
-     * Verifica se usuário já preencheu o nome
-     * */
-    private fun verifyUserName() {
-        val name = securityPreferences.getStoredString(MotivationConstants.KEY.PERSON_NAME)
-        if (name != "") {
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
-        }
-    }
+//    /**
+//     * Verifica se usuário já preencheu o nome
+//     * */
+//    private fun verifyUserName() {
+//        val name = securityPreferences.getStoredString(MotivationConstants.KEY.PERSON_NAME)
+//        if (name != "") {
+//            startActivity(Intent(this, MainActivity::class.java))
+//            finish()
+//        }
+//    }
 
     /**
      * Salva o nome do usuário para utilizações futuras
@@ -67,7 +67,7 @@ class UserActivity : AppCompatActivity(), View.OnClickListener {
         } else {
             // Salva os dados do usuário e redireciona para as frases
             securityPreferences.storeString(MotivationConstants.KEY.PERSON_NAME, name)
-            startActivity(Intent(this, MainActivity::class.java))
+//            startActivity(Intent(this, MainActivity::class.java))
 
             // Impede que seja possível voltar a Activity
             finish()
